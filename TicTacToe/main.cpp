@@ -1,182 +1,99 @@
-#include<iostream>
-#include <cstdlib>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 
 using namespace std;
 
-char matrix[3][3] = {'1','2','3','4','5','6','7','8','9'};
-char player = 'X';
-int n;
+char Board[3][3] = { {'1','2','3'},{'4','5','6'},{'7','8','9'} }; //create 2d Character Array called Board and fill it.
+char player = 'X'; //Set which player beginns.
+bool GameOver = false;
 
-void Box()
-{
-    system("cls");
-    cout << "Tic Tac Toe"<< endl <<endl;
-    for (int i = 0; i < 3; i++){
-         for (int j = 0; j < 3; j++){
-              cout << matrix[i][j] << " ";
-         }
-    cout << endl;
+void displayBoard();
+void Input();
+void changePlayer();
+void checkGameOver();
+
+int main() {
+    displayBoard();
+
+    while (!GameOver) {
+        Input();
+        displayBoard();
+        checkGameOver();
+        changePlayer();
     }
-}
 
-void Input()
- {
-   int a;
-   cout << "It's " << player << " turn. " << " Press the number of the position you want to choose" << endl;
-   cin >> a;
+    cout << "Winner of the game is Player \"" << player << "\"" << endl;
 
-   if (a == 1){
-       if (matrix[0][0] == '1')
-           matrix[0][0] = player;
-       else {
-           cout << " Already in use! Try another one!" << endl;
-           Input();
-       }
-   }
-   else if (a == 2){
-           if (matrix[0][1] == '2')
-               matrix[0][1] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-   else if (a == 3){
-           if (matrix[0][2] == '3')
-               matrix[0][2] = player;
-           else {
-               cout << " Already in use! Try another one!" << endl;
-               Input();
-           }
-   }
-   else if (a == 4){
-            if (matrix[1][0] == '4')
-                matrix[1][0] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-   else if (a == 5){
-            if (matrix[1][1] == '5')
-                matrix[1][1] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-   else if (a == 6){
-           if (matrix[1][2] == '6')
-               matrix[1][2] = player;
-           else {
-               cout << " Already in use! Try another one!" << endl;
-               Input();
-           }
-   }
-   else if (a == 7){
-            if (matrix[2][0] == '7')
-                matrix[2][0] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-   else if (a == 8){
-            if (matrix[2][1] == '8')
-                matrix[2][1] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-   else if (a == 9){
-            if (matrix[2][2] == '9')
-                matrix[2][2] = player;
-            else {
-                cout << " Already in use! Try another one!" << endl;
-                Input();
-            }
-   }
-}
+    cout << "Press enter to exit ..." << endl;
 
-void SwitchPlayers()
-{
-    if ( player == 'X' )
-        player = '0';
-    else
-        player = 'X';
-}
-
-char Win()
-{
-// First Player
-
-   if ( matrix[0][0] == 'X' && matrix[0][1] == 'X' && matrix[0][2] == 'X' )
-       return 'X';
-   if ( matrix[1][0] == 'X' && matrix[1][1] == 'X' && matrix[1][2] == 'X' )
-       return 'X';
-   if ( matrix[2][0] == 'X' && matrix[2][1] == 'X' && matrix[2][2] == 'X' )
-       return 'X';
-
-   if ( matrix[0][0] == 'X' && matrix[1][0] == 'X' && matrix[2][0] == 'X' )
-       return 'X';
-   if ( matrix[0][1] == 'X' && matrix[1][1] == 'X' && matrix[2][1] == 'X' )
-       return 'X';
-   if ( matrix[0][2] == 'X' && matrix[1][2] == 'X' && matrix[2][2] == 'X' )
-       return 'X';
-
-   if ( matrix[0][0] == 'X' && matrix[1][1] == 'X' && matrix[2][2] == 'X' )
-       return 'X';
-   if ( matrix[2][0] == 'X' && matrix[1][1] == 'X' && matrix[0][2] == 'X' )
-       return 'X';
-
-// Second player
-
-   if ( matrix[0][0] == '0' && matrix[0][1] == '0' && matrix[0][2] == '0' )
-       return '0';
-   if ( matrix[1][0] == '0' && matrix[1][1] == '0' && matrix[1][2] == '0' )
-       return '0';
-   if ( matrix[2][0] == '0' && matrix[2][1] == '0' && matrix[2][2] == '0' )
-       return '0';
-
-   if ( matrix[0][0] == '0' && matrix[1][0] == '0' && matrix[2][0] == '0' )
-       return '0';
-   if ( matrix[0][1] == '0' && matrix[1][1] == '0' && matrix[2][1] == '0' )
-       return '0';
-   if ( matrix[0][2] == '0' && matrix[1][2] == '0' && matrix[2][2] == '0' )
-       return '0';
-
-   if ( matrix[0][0] == '0' && matrix[1][1] == '0' && matrix[2][2] == '0' )
-       return '0';
-   if ( matrix[2][0] == '0' && matrix[1][1] == '0' && matrix[0][2] == '0' )
-       return '0';
-
-    return '/';
-}
-
-int main()
-{
-   n = 0;
-   Box();
-   while (1)
-    {
-       n++;
-       Input();
-       Box();
-       SwitchPlayers();
-       if ( Win() == 'X') {
-          cout << "X wins! " << endl;
-          break;
-        }
-       else if ( Win() == '0'){
-          cout << " 0 wins! " << endl;
-          break;
-        }
-      else if ( Win() == '/' && n == 9) {
-          cout << "Game over! " << endl;
-          break;
-
-       }
-    }
+    string a;
+    getline(cin, a);
     return 0;
+}
+
+void displayBoard() {
+    system("cls");
+    cout << "  Tic Tac Toe " << endl;
+    // Display the board
+    for (int i = 0; i < 3; i++) {
+        cout << " ----- ----- ----- " << endl;
+        cout << "|     |     |     |" << endl;
+        for (int j = 0; j < 3; j++) {
+            if (j == 2) {
+                cout << "|  ";
+                cout << Board[i][j];
+                cout << "  |";
+            }
+            else {
+                cout << "|  ";
+                cout << Board[i][j];
+                cout << "  ";
+            }
+        }
+        cout << endl;
+        cout << "|     |     |     |" << endl;
+        cout << " ----- ----- ----- " << endl;
+    }
+}
+
+void Input() {
+
+    int user_input;
+    cout << "Turn: Player " << player << endl;
+    cout << "Type a number: ";
+    cin >> user_input;
+
+    //Check for invalid input
+    user_input--;
+    if (Board[user_input / 3][user_input % 3] != 'X' && Board[user_input / 3][user_input % 3] != 'O') {
+        Board[user_input / 3][user_input % 3] = player;
+    }
+    else changePlayer();
+
+    string a;
+    getline(cin, a);
+}
+
+void changePlayer() { 
+    if (player == 'X') player = 'O';
+    else player = 'X';
+}
+
+void checkGameOver() {
+    //Check every row
+    if ( (Board[0][0] == player && Board[0][1] == player && Board[0][2] == player) || (Board[1][0] == player && Board[1][1] == player && Board[1][2] == player) || (Board[2][0] == player && Board[2][1] == player && Board[2][2] == player) ) {
+        GameOver = true;
+        return changePlayer();
+    }
+    //Check every column
+    else if ( (Board[0][0] == player && Board[1][0] == player && Board[2][0] == player) || (Board[0][1] == player && Board[1][1] == player && Board[2][1] == player) || (Board[0][2] == player && Board[1][2] == player && Board[2][2] == player) ) {
+        GameOver = true;
+        return changePlayer();
+    }
+    //Check Diagonals
+    else if ( (Board[0][0] == player && Board[1][1] == player && Board[2][2] == player) || (Board[0][2] == player && Board[1][1] == player && Board[2][0] == player) ) {
+        GameOver = true;
+        return changePlayer();
+    }
 }
