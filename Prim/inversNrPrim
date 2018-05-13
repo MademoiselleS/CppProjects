@@ -1,0 +1,29 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+
+    int a, invers = 0, d1 = 0, d2 =0;
+    cin >> a;
+
+    for(int i = 1; i <= a; ++i){
+        if(a % i == 0)
+            ++d1;
+    }
+
+    invers = invers * 10 + a % 10;
+    a /= 10;
+
+    for(int i = 1; i <= invers; ++i){
+        if(invers % i == 0)
+            ++d2;
+    }
+
+    if(d1 == 2 && d2 == 2)
+        cout << "DA";
+    else
+        cout << "NU";
+
+    return 0;
+}
