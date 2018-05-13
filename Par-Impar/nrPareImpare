@@ -1,0 +1,21 @@
+#include<iostream>
+
+using namespace std;
+
+
+int main(){
+
+    int v[1000], N, i;
+    cin >> N;
+
+    for(i = 1; i <= N; ++i)
+        cin >> v[i];
+    for(i = 1; i <= N; ++i)
+        if(v[i] % 2 == 0)
+            cout << v[i] << " ";
+    for (i = N; i >= 1; --i)
+        if(v[i] % 2 != 0)
+            cout << v[i] << " ";
+
+    return 0;
+}
