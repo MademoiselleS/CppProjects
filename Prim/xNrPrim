@@ -1,0 +1,24 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+
+    int x, d, nr = 2, count = 0;
+    cin >> x;
+
+    while (count < x){
+        d = 0;
+        for (int i= 1; i <= nr; i++)
+            if(nr % i == 0)
+                d++;
+            if (d == 2)
+                count++;
+        nr++;
+    }
+
+    cout << nr - 1;
+
+    return 0;
+}
+
