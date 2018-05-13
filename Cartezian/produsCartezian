@@ -1,0 +1,28 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+
+int main(){
+
+    int arr[100], n;
+    cin >> n;
+    //numere pare
+    for(int i = 1; i <= n; i++){
+       cin >> arr[i];
+         if(arr[i]%2 == 0)
+           cout << arr[i] << " " << endl;
+    }
+
+    //numere pe pozitii impare
+    for (int i=1; i <=n; i++){
+        cin >> arr[i];
+        if(arr[i]%2==0 && i % 2 != 0)
+            cout << arr[i]<< " ";
+    }
+
+
+
+return 0;
+
+   }
