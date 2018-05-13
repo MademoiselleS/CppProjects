@@ -1,0 +1,57 @@
+#include<iostream>
+
+using namespace std;
+
+
+int main(){
+
+    int v[100000], w[100000],u[200000], N, M;
+
+ // Tastarea de la tastatura a elementelor primul vector
+    cin >> N;
+    for(int i = 1; i <= N; i++)
+        cin >> v[i];
+
+//Tastarea de la tastatura si afisarea elementelor celui de-al doilea vector
+    cin >> M;
+    for(int j = 1; j <= M; j++)
+        cin >> w[j];
+
+//Interclasare
+    int i = 1 , j = 1, k = 0;
+    while(i <= N && j <= M){
+        if(v[i] < w[j]){
+            k++;
+            u[k] = v[i]; // adaug in cel de-al treilea sir element din primul sir
+            i++;
+        }
+        else {
+            k++;
+            u[k] = w[j]; // adaug in cel de-al treilea sir element din cel de-al doilea sir
+            j++;
+        }
+    }
+// pentru ca lungimea vectorilor poate diferi, pot ramane elemente neparcurse, mai jos parcurgem aceste elemente
+    if(i <= N){
+        while(i <= N){
+            k++;
+            u[k] = v[i]; // copiez la sfarsitul sirului 3 elementele ramase in sirul 1
+            i++;
+        }
+    }
+    if(j <= M){
+        while(j <= M){
+            k++;
+            u[k] = w[j]; // copiez la sfarsitul sirului 3 elementele ramase in sirul 2
+            j++;
+        }
+    }
+// afisam vectorul interclasat
+    for(int i = 1; i <= k; i++)
+        cout << u[i] << " ";
+
+    return 0;
+}
+
+
+
