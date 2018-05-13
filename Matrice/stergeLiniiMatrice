@@ -1,0 +1,26 @@
+#include<iostream>
+
+using namespace std;
+
+
+int main(){
+
+    int N, M, mat[499][499], k;
+    cin >> N >> M >> k;
+
+    for (int i = 1; i <= N; ++i)
+        for(int j = 1; j <= M; ++j)
+            cin >> mat[i][j];
+    for(int i = k; i <= N; ++i)
+        for (int j = 1; j <= M; ++j)
+            mat[i][j] = mat[i+1][j];
+    --N;
+
+    for(int i = 1; i <= N; ++i){
+        cout << endl;
+    for(int j = 1; j <= M; ++j)
+        cout << mat[i][j] << " ";
+
+    }
+    return 0;
+}
