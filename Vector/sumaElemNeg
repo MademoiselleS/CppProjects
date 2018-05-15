@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int v[100], n, suma = 0;
+    cin >> n;
+
+    for(int i = 1; i <= n; i++){
+        cin >> v[i];
+        if(v[i] < 0 && v[i] % 2 == 0)
+            suma += v[i];
+    }
+    cout << suma;
+
+    return 0;
+}
