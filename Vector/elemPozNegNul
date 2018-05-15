@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int v[100], n, poz =0, neg=0, nul=0;
+    cin >> n;
+    for(int i=1; i <=n; i++){
+        cin >> v[i];
+        if(v[i] > 0)
+            poz++;
+        else if (v[i] < 0)
+            neg++;
+        else
+            nul++;
+    }
+    cout << "Sunt " <<  poz << " numere pozitive. Sunt " << neg  << " numere negative si "<< nul << " nule!";
+
+
+
+    return 0;
+}
