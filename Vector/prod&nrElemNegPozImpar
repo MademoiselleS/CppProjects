@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float produs = 1;
+    int v[100], n, nr;
+    cin >> n;
+     nr = 0;
+    for(int i = 1; i <= n; i++){
+        cin >> v[i];
+        if(v[i] < 0 && i % 2 == 1){
+            produs *= v[i];
+            nr++;
+
+        }
+
+    }
+
+    cout << " Numarul elementelor negative este " << nr << " iar produsul lor este " << produs;
+
+    return 0;
+}
