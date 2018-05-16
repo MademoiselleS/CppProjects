@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int v[100], u[100], n, k = 0;
+    cin >> n;
+
+    for(int i = 1; i <= n; i++){
+        cin >> v[i];
+        if(v[i] > 0){
+            k++;
+            u[k] = v[i];
+     }
+    }
+
+    for(int i = 1; i <= k; i++)
+        cout << u[i] << " ";
+
+
+    return 0;
+}
