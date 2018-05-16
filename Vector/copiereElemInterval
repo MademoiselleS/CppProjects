@@ -1,0 +1,36 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int i,n,j,k;
+    int v[100],u[100];
+    float p,q;
+
+    cin >> n;
+
+    for(i = 1; i <= n; i++)
+        cin >> v[i];
+
+    do
+    {
+        cin >> p;
+        cin >> q;
+    }
+    while(p >= q);
+
+    k = 1;
+    for(i = 1; i <= n; i++)
+    if((v[i] > p) && (v[i] < q))
+    {
+        u[k] = v[i];
+        k++;
+    }
+    cout << "Vectorul format este : ";
+    for(j = 1; j < k; j++)
+        cout << u[j] << " ";
+        
+    return 0;
+
+}
